@@ -17,7 +17,7 @@ const arrNames = [
 
 // Ejercicio 2 => Dado un array de valores, devolver un array truthy (sin valores nulos, vacíos, no números, indefinidos o falsos);
 
-const arrDirty = [NaN, 0, 5, false, -1, '',undefined, 3, null, 'test'];
+const arrDirty = [ NaN, 0, 5, false, -1, '',undefined, 3, null, 'test' ];
 
 let arrTruthy = arrDirty.filter( elem => !!elem );
 
@@ -39,15 +39,15 @@ let otherCities = arrCities.filter( city => city.country === "Spain" && !city.ca
 
 // Ejercicio 4 => Dado tres arrays de números, sacar en un nuevo array la intersección de estos.
 
-const ar1 = [1,2,3];
-const ar2 = [1,2,3,4,5];
-const ar3 = [1,4,7,2];
+const ar1 = [ 1,2,3 ];
+const ar2 = [ 1,2,3,4,5 ];
+const ar3 = [ 1,4,7,2 ];
 
 function interSeccionTresArrays( ar1,ar2,ar3 ){
     return [...new Set([ ...ar1,...ar2,...ar3 ])];
 }
 
-let joinedArr = interSeccionTresArrays(ar1,ar2,ar3);
+let joinedArr = interSeccionTresArrays( ar1,ar2,ar3 );
 
 
 // Ejercicio 5 =>  Dado un array de ciudades, sacar en un nuevo array las ciudades no capitales con unos nuevos parámetros que sean city y isSpain.
@@ -84,9 +84,9 @@ Ejemplo de uso de la función:
 
 */
 
-const roundedResult = roundTo(2.123, 2); // 2.12
+const roundedResult = roundTo( 2.123, 2 ); // 2.12
  
-const roundedResult2 = roundTo(1.123456789, 6); // 1.123457
+const roundedResult2 = roundTo( 1.123456789, 6 ); // 1.123457
 
 
 function roundTo( valorInicial, decimales ) {
@@ -109,19 +109,19 @@ console.log(result); // {a: 1, c: 3}
 
 // Forma optimizada
 
-function returnFalsyValues(obj,arg){
-    let filtro = Object.values(obj).filter(arg); 
-        return Object.fromEntries(Object.entries(obj).filter( arg => !filtro.includes(arg[1])));
+function returnFalsyValues( obj,arg ){
+    let filtro = Object.values( obj ).filter( arg ); 
+        return Object.fromEntries(Object.entries( obj ).filter( arg => !filtro.includes( arg[1] )));
 }
         
     let object5 = { a: 1, b: '2', c: 3 };
-    console.log(returnFalsyValues(obj5,x => typeof x === 'number'));
+    console.log(returnFalsyValues( obj5,x => typeof x === 'number' ));
 
 // Forma menos optimizada pero válida
 
 function returnFalsyValues2 ( obj,arg ){
     let assignedObject = {};
-    let filteredValues =  Object.values(obj).filter(arg); // resultado => ['2']
+    let filteredValues =  Object.values( obj ).filter( arg ); // resultado => ['2']
     for( const key in obj ){
       if( !filteredValues.includes(obj[key]) ){
         Object.assign( assignedObject, {[key] : obj[key]} )
@@ -176,67 +176,67 @@ function fromBytesToFormattedSizeUnits( number, param = 3 ){
 
 
 
-const resultBytes1 = fromBytesToFormattedSizeUnits(1000);  // 1KB
+const resultBytes1 = fromBytesToFormattedSizeUnits( 1000 );  // 1KB
 
-const resultBytes2 = fromBytesToFormattedSizeUnits(623324);  // 623KB
+const resultBytes2 = fromBytesToFormattedSizeUnits( 623324 );  // 623KB
 
-const resultBytes3 = fromBytesToFormattedSizeUnits(123456789);  // 123MB
+const resultBytes3 = fromBytesToFormattedSizeUnits( 123456789 );  // 123MB
 
-const resultBytes4 = fromBytesToFormattedSizeUnits(-12145489451.5932);  // -12.1GB
+const resultBytes4 = fromBytesToFormattedSizeUnits( -12145489451.5932 );  // -12.1GB
 
 
 // Con switch case
 
-function fromBytesToFormattedSizeUnits2(number, param=3){
+function fromBytesToFormattedSizeUnits2( number,param=3 ){
     let valoresPow = [3,6,9,12,15,18,21,24];
-    let precission = number.toPrecision(param);
-    for (let i = 0; i < valoresPow.length; i++) {
-        switch(valoresPow[i]){
+    let precission = number.toPrecision( param );
+    for ( let i = 0; i < valoresPow.length; i++ ) {
+        switch( valoresPow[i] ){
             case 3: 
-            if(Math.abs(number) < Math.pow(10,3)){
-                precission = precission / Math.pow(10,0) + "B"
+            if( Math.abs(number) < Math.pow( 10,3 ) ){
+                precission = precission / Math.pow( 10,0 ) + "B"
             }
             break;
 
             case 6: 
-            if(Math.abs(number) < Math.pow(10,6)){
-                precission = precission / Math.pow(10,3) + "KB"
+            if( Math.abs(number) < Math.pow( 10,6 )){
+                precission = precission / Math.pow( 10,3 ) + "KB"
             }
             break;
 
             case 9: 
-            if(Math.abs(number) < Math.pow(10,9)){
-                precission = precission / Math.pow(10,6) + "MB"
+            if( Math.abs(number) < Math.pow( 10,9 ) ){
+                precission = precission / Math.pow( 10,6 ) + "MB"
             }
             break;
 
             case 12: 
-            if(Math.abs(number) < Math.pow(10,12)){
-                precission = precission / Math.pow(10,9) + "GB"
+            if( Math.abs(number) < Math.pow( 10,12 ) ){
+                precission = precission / Math.pow( 10,9 ) + "GB"
             }
             break;
 
             case 15: 
-            if(Math.abs(number) < Math.pow(10,15)){
-                precission = precission / Math.pow(10,12) + "TB"
+            if( Math.abs(number) < Math.pow( 10,15 ) ){
+                precission = precission / Math.pow( 10,12 ) + "TB"
             }
             break;
 
             case 18: 
-            if(Math.abs(number) < Math.pow(10,18)){
-                precission = precission / Math.pow(10,15) + "PB"
+            if( Math.abs(number) < Math.pow( 10,18 ) ){
+                precission = precission / Math.pow( 10,15 ) + "PB"
             }
             break;
 
             case 21: 
-            if(Math.abs(number) < Math.pow(10,21)){
-                precission = precission / Math.pow(10,18) + "EB"
+            if( Math.abs(number) < Math.pow( 10,21 ) ){
+                precission = precission / Math.pow( 10,18 ) + "EB"
             }
             break;
 
             case 25: 
-            if(Math.abs(number) < Math.pow(10,24)){
-                precission = precission / Math.pow(10,21) + "ZB"
+            if( Math.abs(number) < Math.pow( 10,24 ) ){
+                precission = precission / Math.pow( 10,21 ) + "ZB"
             }
             break;
 
@@ -247,13 +247,13 @@ function fromBytesToFormattedSizeUnits2(number, param=3){
     }
 }
 
-const resultBytes11 = fromBytesToFormattedSizeUnits2(1000,3);  // 1KB
+const resultBytes11 = fromBytesToFormattedSizeUnits2( 1000,3 );  // 1KB
 
-const resultBytes21 = fromBytesToFormattedSizeUnits2(623324,3);  // 623KB
+const resultBytes21 = fromBytesToFormattedSizeUnits2( 623324,3 );  // 623KB
 
-const resultBytes31 = fromBytesToFormattedSizeUnits2(123456789,3);  // 123MB
+const resultBytes31 = fromBytesToFormattedSizeUnits2( 123456789,3 );  // 123MB
 
-const resultBytes41 = fromBytesToFormattedSizeUnits2(-12145489451.5932,3);  // -12.1GB
+const resultBytes41 = fromBytesToFormattedSizeUnits2( -12145489451.5932,3 );  // -12.1GB
 
 console.log(resultBytes11);
 console.log(resultBytes21);
@@ -286,9 +286,9 @@ function arreglarMAyus( obj ){
      
 // Usando reduce
 
-function arr2obj(arr) {
-   return Object.entries(arr).reduce(
-      (acc, curr) => {
+function arr2obj( arr ) {
+   return Object.entries( arr ).reduce(
+      ( acc, curr ) => {
            acc[curr[0].toLowerCase()] = curr[1];
       return acc;
    },{}
@@ -323,9 +323,9 @@ console.log(stringRecortado2);
 
 // Usando patrones Regex (más correcta)
 
-const removeHTMLTags2 = (code) => {  
+const removeHTMLTags2 = ( label ) => {  
     const regEx = /<[^>]*>?/g;
-    return code.replace(regEx, "");
+    return label.replace( regEx, "" );
 };
   
 
